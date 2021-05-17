@@ -13,9 +13,7 @@ public class StringEntity {
         return string;
     }
 
-    public StringEntity(){
-
-    }
+    public StringEntity(){}
 
     public StringEntity(String string){
         this.string = string;
