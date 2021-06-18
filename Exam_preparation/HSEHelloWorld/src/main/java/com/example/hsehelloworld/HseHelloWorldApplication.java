@@ -14,6 +14,11 @@ public class HseHelloWorldApplication {
         return "Hello Esslingen, Summer Semester 2021";
     }
 
+    @GetMapping("/otherEndpoint")             // GetMapping that answers on Endpoint /otherEndpoint
+    public String sayHelloAgain(){   // Function that responds to a GET Call on the Webserver!
+        return "Hello Esslingen, Summer Semester 2021 (2)";
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(HseHelloWorldApplication.class, args);
     }
