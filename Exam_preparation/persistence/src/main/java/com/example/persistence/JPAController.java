@@ -13,15 +13,15 @@ import java.util.List;
 public class JPAController {
 
     @Autowired
-    private StringRepository stringRepository;
-    private Logger logger = LoggerFactory.getLogger(JPAController.class);
+    private StringRepository stringRepository; // For communicating with the Database
+    private Logger logger = LoggerFactory.getLogger(JPAController.class); // Logger
 
     // Get Mapping for URL /strings
     @GetMapping("/strings")
     public String readAllStrings(){
-        List<String> listofStrings = new ArrayList<>();
+        List<String> listofStrings = new ArrayList<>(); // Creation of ArrayList
 
-        for(StringEntity string: stringRepository.findAll()) {
+        for(StringEntity string: stringRepository.findAll()) { // Communication with the Database
             listofStrings.add(string.getString());
         }
 
@@ -34,7 +34,7 @@ public class JPAController {
     public String createString(@PathVariable String newString){
         logger.error("String to add: {}", newString);
 
-        stringRepository.save(new StringEntity(newString));
+        stringRepository.save(new StringEntity(newString));     // Save a new StringEntity to the stringRepository!
 
         logger.debug("Current list of Strings{}", readAllStrings());
         return newString + " has been added to the list";
