@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  app:
+    container_name: distributedsystemshse:kubernetes-example
+    image: sschanz/distributedsystemshse:kubernetes-example
+    ports:
+      - 8080:8080
