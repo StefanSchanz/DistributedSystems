@@ -1,0 +1,21 @@
+version: "3"
+services:
+  todo-list-rest:
+    container_name: todo-list-rest
+    image: sschanz/distributedsystemshse:TodoListRest-h2
+    networks:
+      - demonet
+    ports:
+      - 8080:8080/tcp
+  ThymeleafUI:
+    container_name: ThymeleafUI
+    image: sschanz/distributedsystemshse:ThymeleafUI
+    networks:
+      - demonet
+    ports:
+      - 8090:8090/tcp
+    depends_on:
+      - todo-list-rest
+networks:
+  demonet:
+    external: true

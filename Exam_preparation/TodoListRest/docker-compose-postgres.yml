@@ -1,0 +1,34 @@
+version: "3"
+services:
+  todo-list-rest:
+    container_name: todo-list-rest
+    image: sschanz/distributedsystemshse:TodoListRest-h2
+    ports:
+      - 8080:8080/tcp
+    environment:
+      - SPRING_PROFILES_ACTIVE=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/mydb
+    depends_on:
+      - database
+  ThymeleafUI:
+    container_name: ThymeleafUI
+    image: sschanz/distributedsystemshse:ThymeleafUI
+    ports:
+      - 8090:8090/tcp
+    depends_on:
+      - todo-list-rest
+  database:
+    container_name: postgresdb
+    image: postgres:latest
+    ports:
+      - 5432:5432/tcp
+    environment:
+      - POSTGRES_DB=mydb
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_PASSWORD=stefan
+      - POSTGRES_USER=stefan
+    volumes:
+      - /tmp/postgres:/var/lib/postgresql/data
+networks:
+  demonet:
+    external: true
