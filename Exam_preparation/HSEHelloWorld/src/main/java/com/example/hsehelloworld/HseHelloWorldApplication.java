@@ -1,7 +1,9 @@
 package com.example.hsehelloworld;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,9 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController     // Need that to Define the Handler for Rest Calls
+@RefreshScope
 public class HseHelloWorldApplication {
 
     private String temp_stored_string = "";
+
+    @Value("${config.source:unknown}")
+    private String configVariable;
+
+    @GetMapping("/config")
+    public String getConfigSource(){
+        return "Configuration Source: " + configVariable;
+    }
 
     @GetMapping             // GetMapping on Functions that should Used with GETs!
     public String sayHello(){   // Function that responds to a GET Call on the Webserver!
