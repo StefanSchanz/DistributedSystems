@@ -6,7 +6,7 @@ metadata:
     app: hsedemo
   name: hsedemo
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: hsedemo
@@ -18,7 +18,7 @@ spec:
         app: hsedemo
     spec:
       containers:
-      - image: sschanz/distributedsystemshse:KubernetesDemo_v2
+      - image: sschanz/distributedsystemshse:KubernetesDemo_v3
         name: distributedsystemshse
         resources: {}
 status: {}

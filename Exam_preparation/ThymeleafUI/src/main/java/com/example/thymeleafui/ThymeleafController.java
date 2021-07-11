@@ -19,8 +19,8 @@ public class ThymeleafController {
     @GetMapping("/")
     public String displayPage(Model model){
         Todo[] todos = WebClient.create("http://localhost:8080/todos/").get().retrieve().bodyToMono(Todo[].class).block();
-        model.addAttribute("message", message);
-        model.addAttribute("todos", todos);
+        model.addAttribute("message", message);     // First "message" is in the html template - message is variable
+        model.addAttribute("todos", todos);         // "todos" is again in the html template
         return "page";
     }
 

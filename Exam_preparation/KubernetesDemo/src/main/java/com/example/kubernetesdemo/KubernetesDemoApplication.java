@@ -15,7 +15,7 @@ public class KubernetesDemoApplication {
 
     @GetMapping("/hello")
     String sayHello(){
-        return hostName + ": Hallo, HSE ";
+        return hostName + ": Hallo, HSE (Version new)";
     }
 
     @GetMapping("/crash")
