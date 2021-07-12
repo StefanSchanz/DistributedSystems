@@ -24,6 +24,7 @@ public class ThymeleafController {
         return "page";
     }
 
+    @GetMapping("/{name}")
     public String displayPage(@PathVariable String name, Model model){
         if(name != null && name.length() != 0){
             message = name;
